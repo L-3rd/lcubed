@@ -1,6 +1,8 @@
 <script lang="ts">
   import { page } from "$app/stores";
 
+  import Link from "$lib/components/Link.svelte";
+
   let formattedLinks: Array<Link>;
   $: {
     if (formattedLinks == null) formattedLinks = [];
@@ -22,12 +24,12 @@
   }
 </script>
 
-<ul>
-  {#each formattedLinks as link}
-    <li>
-      <a href={link.href}>
-        {link.text}
-      </a>
-    </li>
-  {/each}
-</ul>
+<div class="flex w-full justify-center">
+  <ul class="flex flex-col items-center w-1/3">
+    {#each formattedLinks as link}
+      <li class="flex-grow mb-5">
+        <Link href={link.href}>{link.text}</Link>
+      </li>
+    {/each}
+  </ul>
+</div>
