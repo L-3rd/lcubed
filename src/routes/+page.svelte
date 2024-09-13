@@ -4,6 +4,7 @@
   import Link from "$lib/components/Link.svelte";
   import { onMount } from "svelte";
 
+  let embed = $page.url.searchParams.get("embed") != null;
   let formattedLinks: Array<Link>;
   $: {
     if (formattedLinks == null) formattedLinks = [];
@@ -33,7 +34,7 @@
   <div class="flex items-center justify-center w-1/3">
     <div class="flex flex-col items-center justify-center h-fit p-11 border border-gray-700 [&>*:not(:last-child)]:mb-5">
       {#each formattedLinks as link}
-          <Link href={link.href}>{link.text}</Link>
+          <Link href={link.href} target={embed ? "_parent" : ""}>{link.text}</Link>
       {/each}
     </div>
   </div>
