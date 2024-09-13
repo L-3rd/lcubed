@@ -30,11 +30,11 @@
 </script>
 
 <div class="flex w-full min-h-screen justify-center">
-  <ul class="flex flex-col w-1/3 items-center justify-center">
-    {#each formattedLinks as link}
-      <li class="mb-5">
-        <Link href={link.href}>{link.text}</Link>
-      </li>
-    {/each}
-  </ul>
+  <div class="flex items-center justify-center w-1/3">
+    <div class="flex flex-col items-center justify-center h-fit p-11 border border-gray-700 [&>*:not(:last-child)]:mb-5">
+      {#each formattedLinks as link}
+          <Link href={link.href}>{link.text}</Link>
+      {/each}
+    </div>
+  </div>
 </div>
