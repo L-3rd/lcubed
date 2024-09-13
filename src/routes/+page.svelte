@@ -29,10 +29,10 @@
   }
 </script>
 
-<div class="flex w-full justify-center">
-  <ul class="flex w-1/3 flex-col items-center">
+<div class="flex w-full min-h-screen justify-center">
+  <ul class="flex flex-col w-1/3 items-center justify-center">
     {#each formattedLinks as link}
-      <li class="mb-5 flex-grow">
+      <li class="mb-5">
         <Link href={link.href}>{link.text}</Link>
       </li>
     {/each}
