@@ -2,6 +2,7 @@
   import { page } from "$app/stores";
 
   import Link from "$lib/components/Link.svelte";
+  import { onMount } from "svelte";
 
   let formattedLinks: Array<Link>;
   $: {
@@ -18,6 +19,10 @@
     }
   }
 
+  onMount(() => {
+    document.documentElement.style.setProperty("--background", "#ffffff");
+  });
+
   interface Link {
     href: string;
     text: string;
@@ -25,9 +30,9 @@
 </script>
 
 <div class="flex w-full justify-center">
-  <ul class="flex flex-col items-center w-1/3">
+  <ul class="flex w-1/3 flex-col items-center">
     {#each formattedLinks as link}
-      <li class="flex-grow mb-5">
+      <li class="mb-5 flex-grow">
         <Link href={link.href}>{link.text}</Link>
       </li>
     {/each}
