@@ -6,6 +6,10 @@ interface Data {
   embed?: boolean;
   links?: Array<Link>;
   secondaryColor?: string | null;
+  header?: {
+    image: string | null;
+    text: string | null;
+  };
 }
 
 interface Link {
@@ -14,6 +18,10 @@ interface Link {
 }
 
 export function dataFromSearchParams(searchParams: URLSearchParams) {
+  let header;
+  try {
+    header = JSON.parse(searchParams.get("header") || "");
+  } catch {}
   const data: Data = {
     backgroundCss: searchParams.get("backgroundCss"),
     backgroundOpacity: searchParams.get("backgroundOpacity"),
@@ -22,6 +30,7 @@ export function dataFromSearchParams(searchParams: URLSearchParams) {
     embed: searchParams.get("embed") != null,
     links: [],
     secondaryColor: searchParams.get("secondaryColor"),
+    header,
   };
 
   const links = searchParams.get("links");

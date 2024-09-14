@@ -5,19 +5,37 @@
   import LinkItem from "$lib/components/LinkItem.svelte";
   import { dataFromSearchParams } from "$lib/types";
 
+  let links: HTMLDivElement;
   let data = dataFromSearchParams($page.url.searchParams);
   $: {
     if (browser) {
       document.documentElement.style.setProperty("--background", data.backgroundCss || "#ffffff");
-      document.documentElement.style.setProperty("--background-opacity", data.backgroundOpacity as string || "1");
+      document.documentElement.style.setProperty(
+        "--background-opacity",
+        (data.backgroundOpacity as string) || "1",
+      );
     }
   }
 </script>
 
-<div class="fake-background flex relative min-h-screen w-full justify-center">
-  <div class="flex w-1/3 items-center justify-center">
+<div
+  class="fake-background relative flex min-h-screen w-full flex-col items-center justify-center gap-7 lg:flex-row lg:gap-3"
+>
+  {#if data.header}
+    <div class="flex w-1/3 items-center justify-center text-center">
+      <div class="border-2 p-6 tiny:p-11" style={`border-color: ${data.borderColor};`}>
+        {#if data.header.image}
+          <img src={data.header.image} alt="Header" />
+        {/if}
+        {#if data.header.text}
+          <p class="w-72 text-2xl">{data.header.text}</p>
+        {/if}
+      </div>
+    </div>
+  {/if}
+  <div bind:this={links} class="flex w-1/3 items-center justify-center">
     <div
-      class="flex h-fit flex-col items-center justify-center p-6 tiny:p-11 border-2 [&>*:not(:last-child)]:mb-5"
+      class="flex h-fit flex-col items-center justify-center border-2 p-6 tiny:p-11 [&>*:not(:last-child)]:mb-5"
       style={`border-color: ${data.borderColor}`}
     >
       {#if data.links}
