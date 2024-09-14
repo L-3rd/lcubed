@@ -17,7 +17,7 @@
 <div class="fake-background flex relative min-h-screen w-full justify-center">
   <div class="flex w-1/3 items-center justify-center">
     <div
-      class="flex h-fit flex-col items-center justify-center p-11 border-2 [&>*:not(:last-child)]:mb-5"
+      class="flex h-fit flex-col items-center justify-center p-6 tiny:p-11 border-2 [&>*:not(:last-child)]:mb-5"
       style={`border-color: ${data.borderColor}`}
     >
       {#if data.links}
