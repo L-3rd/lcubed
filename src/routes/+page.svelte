@@ -24,6 +24,7 @@
           <LinkItem
             href={link.href}
             target={data.embed ? "_parent" : null}
+            borderColor={data.borderColor}
             color={data.color}
             secondaryColor={data.secondaryColor}
           >

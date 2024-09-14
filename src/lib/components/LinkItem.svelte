@@ -26,7 +26,7 @@
       bind:this={link}
       class="go-back absolute left-0 top-0 flex w-72 items-center justify-center border-2 px-3 py-2 text-center"
       class:bg-white={!color}
-      style={(color ? `background-color: ${color};` : "") + (borderColor ? `border-color: ${borderColor}` : "")}
+      style={`${color ? `background-color: ${color};` : ""} ${borderColor ? `border-color: ${borderColor};` : ""}`}
     >
       <slot />
     </div>
