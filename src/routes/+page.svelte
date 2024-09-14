@@ -21,7 +21,7 @@
 <div
   class="fake-background relative flex min-h-screen w-full flex-col items-center justify-center gap-7 lg:flex-row lg:gap-3"
 >
-  {#if data.header}
+  {#if data.header?.image || data.header?.text}
     <div class="flex w-1/3 items-center justify-center text-center">
       <div class="border-2 p-6 tiny:p-11" style={`border-color: ${data.borderColor};`}>
         {#if data.header.image}
