@@ -25,7 +25,7 @@
     <div class="flex w-1/3 items-center justify-center text-center">
       <div class="border-2 p-6 tiny:p-11" style={`border-color: ${data.borderColor};`}>
         {#if data.header.image}
-          <img src={data.header.image} alt="Header" />
+          <img src={data.header.image} alt="Header" class="max-w-72" />
         {/if}
         {#if data.header.text}
           <p class="w-72 text-2xl">{data.header.text}</p>
