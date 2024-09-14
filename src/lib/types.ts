@@ -1,5 +1,6 @@
 interface Data {
   backgroundCss?: string | null;
+  backgroundOpacity: string | number | null;
   borderColor?: string | null;
   color?: string | null;
   embed?: boolean;
@@ -15,6 +16,7 @@ interface Link {
 export function dataFromSearchParams(searchParams: URLSearchParams) {
   const data: Data = {
     backgroundCss: searchParams.get("backgroundCss"),
+    backgroundOpacity: searchParams.get("backgroundOpacity"),
     borderColor: searchParams.get("border"),
     color: searchParams.get("color"),
     embed: searchParams.get("embed") != null,
