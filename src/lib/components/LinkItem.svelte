@@ -5,26 +5,20 @@
   export let color: string | null = "";
   export let secondaryColor: string | null = "";
 
-  let link: HTMLDivElement;
-  let background: HTMLDivElement;
-  $: {
-    if (link && background) {
-      background.style.height = `${link.offsetHeight}px`;
-    }
-  }
+  let backgroundHeight: number;
 </script>
 
-<div class="relative w-72" style={link ? `height: ${link.offsetHeight}px;` : ""}>
+<div class="relative w-full">
   <div
-    bind:this={background}
-    class="absolute left-2 top-2 w-72 border-2"
+    class="absolute left-2 top-2 z-0 w-full border-2"
     class:bg-red-800={!secondaryColor}
-    style={(secondaryColor ? `background-color: ${secondaryColor};` : "") + (borderColor ? `border-color: ${borderColor}` : "")}
+    style={`${secondaryColor ? `background-color: ${secondaryColor};` : ""}
+      ${borderColor ? `border-color: ${borderColor}` : ""}; height: ${backgroundHeight + "px"};`}
   />
-  <a {href} {target}>
+  <a {href} {target} class="relative">
     <div
-      bind:this={link}
-      class="go-back absolute left-0 top-0 flex w-72 items-center justify-center border-2 px-3 py-2 text-center"
+      bind:offsetHeight={backgroundHeight}
+      class="go-back relaltive flex w-full items-center justify-center border-2 px-3 py-2 text-center"
       class:bg-white={!color}
       style={`${color ? `background-color: ${color};` : ""} ${borderColor ? `border-color: ${borderColor};` : ""}`}
     >

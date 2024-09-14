@@ -19,23 +19,26 @@
 </script>
 
 <div
-  class="fake-background relative flex min-h-screen w-full flex-col items-center justify-center gap-7 lg:flex-row lg:gap-3"
+  class="fake-background relative flex min-h-screen w-full flex-col items-center justify-center gap-7 p-3 min-[900px]:flex-row min-[900px]:gap-20"
 >
   {#if data.header?.image || data.header?.text}
-    <div class="flex w-1/3 items-center justify-center text-center">
-      <div class="border-2 p-6 tiny:p-11" style={`border-color: ${data.borderColor};`}>
+    <div class="section-width flex items-center justify-center text-center">
+      <div
+        class="border-2 px-6 py-5 tiny:px-11 min-[900px]:py-11"
+        style={`border-color: ${data.borderColor};`}
+      >
         {#if data.header.image}
-          <img src={data.header.image} alt="Header" class="max-w-72" />
+          <img src={data.header.image} alt="Header" class="max-w-full" />
         {/if}
         {#if data.header.text}
-          <p class="w-72 text-2xl">{data.header.text}</p>
+          <p class="w-full text-2xl">{data.header.text}</p>
         {/if}
       </div>
     </div>
   {/if}
-  <div bind:this={links} class="flex w-1/3 items-center justify-center">
+  <div bind:this={links} class="section-width flex items-center justify-center">
     <div
-      class="flex h-fit flex-col items-center justify-center border-2 p-6 tiny:p-11 [&>*:not(:last-child)]:mb-5"
+      class="flex w-full flex-col items-center justify-center border-2 px-6 py-5 tiny:px-11 min-[900px]:py-11 [&>*:not(:last-child)]:mb-5"
       style={`border-color: ${data.borderColor}`}
     >
       {#if data.links}
@@ -55,7 +58,7 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .fake-background::after {
     content: "";
     position: absolute;
@@ -66,5 +69,21 @@
     background: var(--background);
     opacity: var(--background-opacity);
     z-index: -1;
+  }
+
+  .section-width {
+    width: 80%;
+
+    @media (min-width: 550px) {
+      width: 60%;
+    }
+
+    @media (min-width: 900px) {
+      width: 33.333%;
+    }
+
+    @media (min-width: 1536px) {
+      width: 25%;
+    }
   }
 </style>
